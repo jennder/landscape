@@ -14,11 +14,11 @@ def get_transform(dir, func):
 
 def hough_lines(img):
     mono = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(mono, 75, 150)
-    lines = cv2.HoughLinesP(edges, 1, np.pi/180, 30, maxLineGap=250)
+    edges = cv2.Canny(mono, 200, 400)
+    lines = cv2.HoughLinesP(edges, 1, np.pi/180, 30, maxLineGap=50)
     for line in lines:
         x1, y1, x2, y2 = line[0]
-        cv2.line(img, (x1, y1), (x2, y2), (50, 50, 50), 1)
+        cv2.line(img, (x1, y1), (x2, y2), (200, 200, 200), 1)
     return img
 
 def canny_edge(img):
@@ -40,4 +40,4 @@ def hough_circle(img):
 
     return img
 
-get_transform('../assets/', canny_edge)
+get_transform('../assets/', hough_lines)
