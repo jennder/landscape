@@ -6,11 +6,11 @@ def get_transform(dir, func):
     for filename in os.listdir(dir):
         if 'DS_Store' in filename:
             continue
-        path = os.path.join(dir, filename)
-        get_one(path, func)
+        get_one(filename, func)
 
-def get_one(filename, func):
-    img = cv2.imread(filename)
+def get_one(path, filename, func):
+    path = os.path.join(path, filename)
+    img = cv2.imread(path)
     out = func(img)
     cv2.imwrite(filename, out)
 
@@ -42,5 +42,5 @@ def hough_circle(img):
 
     return img
 
-get_transform('../assets/', hough_circle)
-#get_one('../assets/20200920-fens-0003.JPG', hough_circle)
+#get_transform('../assets/', hough_circle)
+get_one('../assets/20200920-fens-0003.JPG', hough_circle)
