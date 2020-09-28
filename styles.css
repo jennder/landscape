@@ -1,0 +1,15 @@
+.home {
+    background: url(assets/20200926-apples-0008.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 1264px;
+}
+
+body {
+    margin: 0px !important;
+}
+
+.clipping {
+    width: 1920px;
+}

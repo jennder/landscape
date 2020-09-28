@@ -6,7 +6,7 @@ def get_transform(dir, func):
     for filename in os.listdir(dir):
         if 'DS_Store' in filename:
             continue
-        get_one(filename, func)
+        get_one(dir, filename, func)
 
 def get_one(path, filename, func):
     path = os.path.join(path, filename)
@@ -29,6 +29,7 @@ def canny_edge(img):
     return edges
 
 def hough_circle(img):
+    bg = cv2.imread('../assets/bg.jpg')
     resized = cv2.resize(img,(600, 400),interpolation = cv2.INTER_AREA)
     mono = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
     circles = cv2.HoughCircles(mono,cv2.HOUGH_GRADIENT,1,20,
@@ -38,9 +39,9 @@ def hough_circle(img):
 
     for i in circles[0,:]:
         # draw the outer circle
-        cv2.circle(img,(i[0]*10,i[1]*10),i[2]*10,(200,200,200),1)
+        cv2.circle(bg,(i[0]*10,i[1]*10),i[2]*10,(200,200,200),1)
 
-    return img
+    return bg
 
-#get_transform('../assets/', hough_circle)
-get_one('../assets/20200920-fens-0003.JPG', hough_circle)
+get_transform('../assets/', hough_circle)
+#get_one('../assets/20200920-fens-0003.JPG', hough_circle)
