@@ -23,26 +23,21 @@ def hough_lines(img):
 
 def canny_edge(img):
     mono = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(mono, 100, 200)
+    edges = cv2.Canny(mono, 75, 150)
     return edges
 
 def hough_circle(img):
-    print("1")
-    
-    print("2")
-    print("3")
     resized = cv2.resize(img,(600, 400),interpolation = cv2.INTER_AREA)
     mono = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
-    circles = cv2.HoughCircles(mono,cv2.HOUGH_GRADIENT,1,50,
-                                param1=50,param2=30,minRadius=0,maxRadius=0)
-    print("4")
+    circles = cv2.HoughCircles(mono,cv2.HOUGH_GRADIENT,1,20,
+                                param1=30,param2=15,minRadius=0,maxRadius=0)
+
     circles = np.uint16(np.around(circles))
-    print("5")
+
     for i in circles[0,:]:
-        print("circle ", i)
         # draw the outer circle
         cv2.circle(img,(i[0]*10,i[1]*10),i[2]*10,(200,200,200),1)
 
     return img
 
-get_transform('../assets/', hough_circle)
+get_transform('../assets/', canny_edge)
