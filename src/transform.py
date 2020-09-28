@@ -2,17 +2,13 @@ import os
 import cv2
 import numpy as np
 
-recognizer = cv2.face.LBPHFaceRecognizer_create()  
-
 def get_transform(dir, func):
     for filename in os.listdir(dir):
         if 'DS_Store' in filename:
             continue
         print(os.path.join(dir, filename))
         img = cv2.imread(os.path.join(dir, filename))
-        # pass to func to transform image
         out = func(img)
-        #cv2.imshow(filename, out)
         cv2.imwrite(filename, out)
 
 
