@@ -45,16 +45,8 @@ def hough_circle(img):
     for i in circles[0,:]:
         print("circle ", i)
         # draw the outer circle
-        #cv2.circle(img,(i[0]*10,i[1]*10),i[2]*10,(200,200,200),1)
-        cv2.circle(img,(i[0],i[1]),i[2],(200,200,200),1)
-        # draw the center of the circle
-        #cv2.circle(img,(i[0],i[1]),2,(0,0,255),3)
+        cv2.circle(img,(i[0]*10,i[1]*10),i[2]*10,(200,200,200),1)
 
     return img
-    '''
-a = cv2.imread('../assets/20200926-apples-0003.JPG')
-out = hough_circle(a)
-cv2.imshow('filename', out)
-cv2.imwrite('houghcircle.JPG', out)
-'''
+
 get_transform('../assets/', hough_circle)
