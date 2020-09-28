@@ -6,13 +6,13 @@
     height: 1264px;
 }
 
-body {
-    margin: 0px !important;
+.clipping {
+    width: 1440px;
+    overflow-x: hidden;
 }
 
-.clipping {
-    width: 1920px;
-    overflow: hidden;
+body {
+    margin: 0px;
 }
 
 .bg {
@@ -20,6 +20,22 @@ body {
     z-index: -1;
     margin-top: -5px;
     overflow: hidden;
+}
+
+.right {
+    position: absolute;
+    z-index: -2;
+    margin-top: -5px;
+    overflow: hidden;
+    margin: 100px 900px;
+}
+
+.left {
+    position: absolute;
+    z-index: -2;
+    margin-top: -5px;
+    overflow: hidden;
+    margin: 100px;
 }
 
 .img-center {
